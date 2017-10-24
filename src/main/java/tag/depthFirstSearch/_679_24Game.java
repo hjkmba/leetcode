@@ -102,8 +102,33 @@ public class _679_24Game {
                     permutation(nums, carry, set, pos + 1);
                     set.remove(num);
                 }
-            } else if ((set.contains(num) && count(nums, num)>1)){
+            }
+        }
+    }
 
+    private ArrayList<Integer> getLeft(int[] all, int[] carry, int pos) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i : all) {
+            list.add(i);
+        }
+        for (int i = 0; i < pos; i++) {
+            list.remove(Integer.valueOf(carry[i]));
+        }
+
+        HashSet<Integer> set = new HashSet<>(list);
+        return new ArrayList<>(set);
+    }
+
+    // recursive method
+    public void permutationForDuplicatedItems(int[] nums, int[] carry, int pos) {
+        ArrayList<Integer> left = getLeft(nums, carry, pos);
+        for (int num : left) {
+            carry[pos] = num;
+            if (pos == nums.length - 1) {
+                System.out.println(Arrays.toString(carry));
+                return;
+            } else {
+                permutationForDuplicatedItems(nums, carry, pos + 1);
             }
         }
     }
@@ -195,8 +220,20 @@ public class _679_24Game {
     public static void main(String[] args) throws CloneNotSupportedException {
 //        new _679_24Game().permutationByStack(new int[]{1,2,3});
 //        new _679_24Game().permutation(new int[]{1, 2, 2}, new int[3], new HashSet<>(), 0);
+//        new _679_24Game().permutationForDuplicatedItems(new int[]{1, 2, 3}, new int[3], 0);
 //        new _679_24Game().test();
-        System.out.println(new _679_24Game().judgePoint24(new int[]{1,2,1,2}));
+//        System.out.println(new _679_24Game().judgePoint24(new int[]{1,2,1,2}));
+        Vector<Integer> v = new Vector<>();
+        Queue<Integer> queue = new LinkedList<>();
+        Integer[] a = new Integer[]{1, 2, 3};
+        List<Integer> list = Arrays.asList(a);
+//        list.add(1);
+        list.set(1, 9);
+        System.out.println(Arrays.toString(a));
+        System.out.println(list.toString());
+
+        ArrayList<Integer> l = new ArrayList<>();
+
     }
 
 }
