@@ -94,7 +94,6 @@ public class LongestCommonSubString {
         new LongestCommonSubString().getLongestByLoop("abcdefg", "ecfgdfed");
         new LongestCommonSubString().getLongestByLoop("abcdefg", "edcefgdfefd");
         Class<?> a = null;
-        a.getMethods()[0].
 
     }
 }
